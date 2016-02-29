@@ -2,7 +2,7 @@
 
 
 
-makeCacheMatrix <- function(x = numeric()) {
+makeVector <- function(x = numeric()) {
   m <- NULL
   set <- function(y) {
     x <<- y
@@ -17,7 +17,7 @@ makeCacheMatrix <- function(x = numeric()) {
 }
 
 
-cacheSolve <- function(x, ...) {
+cachemean <- function(x, ...) {
   m <- x$getmean()
   if(!is.null(m)) {
     message("getting cached data")
@@ -28,3 +28,8 @@ cacheSolve <- function(x, ...) {
   x$setmean(m)
   m
 }
+
+## this tests the functions
+set.seed(42)
+A <- matrix(rnorm(5*5),5,5)
+cacheSolve(makeCacheMatrix(A))
